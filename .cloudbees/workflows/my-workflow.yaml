@@ -1,17 +1,17 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
-
 on:
   push:
     branches:
-      - '**'
-
+      - "**"
+  workflow_dispatch:
 jobs:
   build:
     steps:
       - name: Say hello
+        timeout-minutes: 1
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "hello world new rerun latest QA-2-3"
+          echo "hello world" && sleep 100
